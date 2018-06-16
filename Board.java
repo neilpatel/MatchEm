@@ -5,7 +5,7 @@
 */
 
 // import statements
-import javax.swing.JPanel
+import javax.swing.JPanel;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.BorderFactory;
@@ -59,7 +59,7 @@ public class Board extends JPanel implements ActionListener {
  	public Board() {
  		super();
 
- 		setBackground(Color, BLUE);
+ 		setBackground(COLOR, BLUE);
  		setBorder(BorderFactory.createEmptyBorder(BOARD_BORDER_WIDTH,
    		BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH));
   		setLayout(new GridLayout(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS));
@@ -107,7 +107,6 @@ public class Board extends JPanel implements ActionListener {
  	}
 
  	// Add a card to selected card list
-
  	private void addToChose(Cell aCard) {
  		// Conditional to check if the card is not empty
  		if (aCard != null) {
@@ -119,9 +118,136 @@ public class Board extends JPanel implements ActionListener {
   		}
  	}
 
+ 	// When a card is clicked, change the board features accordingly	
+ 	public void actionPerformed(ActionEvent e) {
+  		if (e == null) {
+   			error("actionPermormed(ActionEvent) received null", false);
+   			return;
+  		}
+
+  		if (!(e.getSource() instanceof Cell)) {
+  	 		return;
+  		}
+
+  		if (!isCardValid((Cell) e.getSource())) {
+   			return;
+  		}
+
+ 		++selectedCards;
+
+ 		// Conditional to check if the selected number of cards is the max number
+  		if (selectedCards == MAX_SELECTED_CARDS) {
+   			if (!sameCellPosition(mCardChecker[FIRST].getLocation(),
+     			mCardChecker[SECOND].getLocation())) {
+					setSelectedCards(mCardChecker[FIRST], mCardChecker[SECOND]);
+   			} else {
+    			--selectedCards;
+   			}
+  		}
+
+  		if (selectedCards <= MAX_SELECTED_CARDS) {
+   			Point gridLoc = getCellLocation((Cell) e.getSource());
+   			setCardToVisible(gridLoc.x, gridLoc.y);
+  			mCardChecker[selectedCards - 1] = getCellAtLoc(gridLoc);
+  			addToChose(getCellAtLoc(gridLoc));
+  		}
+ 	}
+
+ 	// Return the location of a particular Cell on the GameBoard
+ 	private Cell getCellAtLoc(Point point) {
+  		if (point == null) {
+   			error("getCellAtLoc( Point ) received null", true);
+   			return null;
+ 		}
+
+  		return mBoard[point.x][point.y];
+ 	}
+
+ 	// Set the card to visible at a specified location
+ 	private void setCardToVisible(int x, int y) {
+ 		mBoard[x][y].setSelected(true);
+ 		showCardImages();
+ 	}
+
+ 	// Allow the user to see a preview of the cards prior to the beginning of the game
+ 	private void peek() {
+ 		Action showImagesAction = new AbstractAction() {
+ 			private static final long versionID = 1L;
+ 			public void actionPerformed(ActionEvent e) {
+ 				showCardImages();
+ 			}
+ 		};
+
+ 		Timer timer = new Timer(PEEK_DELAY, showImagesAction);
+ 		timer.setRepeats(false);
+ 		timer.start();
+ 	}
+
+ 	// Display the images on the board
+ 	private void setImages() {
+ 		ImageIcon anImage;
+
+ 		for (int row = 0; row < NUMBER_OF_ROWS; row++) {
+   			for (int column = 0; column < NUMBER_OF_COLUMNS; column++) {
+    			URL file = getClass().getResource(DEFAULT_IMAGE_FOLDER + DEFAULT_IMAGE_FILENAME_PREFIX + mCardStorage[column + (NUMBER_OF_COLUMNS * row)] + DEFAULT_IMAGE_FILENAME_SUFFIX);
+			
+				if (file == null) {
+     				System.err.println(TAG + "setImages() reported error \"File not found\".");
+     				System.exit(1);
+    			}
+    			anImage = new ImageIcon(file);
+				mBoard[row][column].setIcon(anImage);
+   			}
+  		}
+ 	}
+
+ 	// Display a specific image at a certain location
+ 	private void showImage(int x, int y) {
+ 		URL file = getClass().getResource(DEFAULT_IMAGE_FOLDER + DEFAULT_IMAGE_FILENAME_PREFIX + mCardStorage[y + (NUMBER_OF_COLUMNS * x)] + DEFAULT_IMAGE_FILENAME_SUFFIX);
+ 		
+ 		if (file == null) {
+ 			System.err.println(TAG + "showImage(int, int) reported error \"File not found\".");
+ 			System.exit(-1);
+ 		}
+
+ 		ImageIcon anImage = new ImageIcon(file);
+ 		mBoard[x][y].setIcon(anImage);
+ 	}
+
+ 	// Display all the images on the board
+ 	private void showCardImages() {
+ 		// For each card on the board
+  		for (int row = 0; row < NUMBER_OF_ROWS; row++) {
+   			for (int column = 0; column < NUMBER_OF_COLUMNS; column++) {
+    			// Conditional to check if the card is selected
+    			if (!mBoard[row][column].isSelected()) {
+     				// If true, see if the card has been matched
+     				if (mBoard[row][column].isMatched()) {
+      					// If it was successfully matched, empty both card selections
+      					mBoard[row][column].setIcon(new ImageIcon(getClass().getResource(EMPTY_IMAGE_PATH)));
+      					mBoard[row][column].setType(EMPTY_CARD_TYPE);
+     				} else {
+      					// If the correct selection was not made, hide the card to allow the next selection to be made
+      					mBoard[row][column].setIcon(new ImageIcon(getClass().getResource(HIDDEN_IMAGE_PATH)));
+      					mBoard[row][column].setType(HIDDEN_CARD_TYPE);
+     				}
+    			} else {
+    				// The user has not been selected
+     				showImage(row, column);
+     				String type = mCardStorage[column + (NUMBER_OF_COLUMNS * row)];
+     				int parsedType = Integer.parseInt(type);
+    				mBoard[row][column].setType(parsedType);
+
+    			} 
+   			} // Inner For Loop (columns)
+  		} // Outermost For Loop (rows)
+ 	}
+
+ 	
+
+
+
  	/* ToDo:
- 	*	Add actionPerformed( with some action) method
- 	*	Add Cell Location Method to give the exact location of the cell on board
  	*	Add a method to determine if the card is visible to the user at a certain location
 	*	Add methods to handle the images
 	* 	Random generation of cards method
