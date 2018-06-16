@@ -68,9 +68,18 @@ public class Cell extends JButton {
 	// Check if the type of returned type from the sameType() is an empty cell
 	public boolean isEmpty() {
 		if(this.mType != EMPTY_CELL_TYPE) {
-			return false; // If the cell contains something
+			return false; // If the cell contains something (not paired with another cell)
 		}
 		return true; // If the cell is empty
 	}
+
+	/**	
+	*	ToDo Methods:
+	*	1.	> Check if two cells have been selected
+	*			> May need to adjust the GUI features to show selections have been made
+	*	2.	> Check if the two cells that are selected match (aka equal)
+	* 	3. 	> Simple method to set the two selections be compared to each other
+	* 	4. 	> Method to check if they have been matched and next steps
+	*/
 
 }
