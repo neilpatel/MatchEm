@@ -41,7 +41,94 @@ public class Board extends JPanel implements ActionListener {
 	private static final int EMPTY_CELL_TYPE = 0;
 	private static final int HIDDEN_CARD_TYPE = 26;
 	private static final int EMPTY_CARD_TYPE = 25;
-	
+	private static final String DEFAULT_IMAGE_FILENAME_SUFFIX = ".jpg";
+	private static final String DEFAULT_IMAGE_FILENAME_PREFIX = "img-";	
+ 	private static final String DEFAULT_IMAGE_FOLDER = "/images/";
+ 	private static final String HIDDEN_IMAGE_PATH = DEFAULT_IMAGE_FOLDER + DEFAULT_IMAGE_FILENAME_PREFIX + "26" + DEFAULT_IMAGE_FILENAME_SUFFIX;
+ 	private static final String EMPTY_IMAGE_PATH = DEFAULT_IMAGE_FOLDER + DEFAULT_IMAGE_FILENAME_PREFIX + "25" + DEFAULT_IMAGE_FILENAME_SUFFIX;
+
+ 	private static ArrayList<Cell> chosenCards = new ArrayList<Cell>();
+ 	private static int numOfMatchedPairs = 0;
+ 	private static int numOfFailedAttempts = 0;
+ 	private static int selectedCards = 0;
+ 	private Cell[][] mBoard = null;
+ 	private Cell [] mCardChecker = new Cell[MAX_SELECTED_CARDS];
+ 	private String[] mCardStorage = initCardStorage();
+
+ 	// Constructor; Setup the board to be ready to use
+ 	public Board() {
+ 		super();
+
+ 		setBackground(Color, BLUE);
+ 		setBorder(BorderFactory.createEmptyBorder(BOARD_BORDER_WIDTH,
+   		BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH));
+  		setLayout(new GridLayout(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS));
+  		mBoard = new Cell[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
+
+  		for (int row = 0; row < NUMBER_OF_ROWS; row++) {
+   			for (int column = 0; column < NUMBER_OF_COLUMNS; column++) {
+    			mBoard[row][column] = new Cell(EMPTY_CELL_TYPE);
+    			mBoard[row][column].addActionListener(this);
+    			add(mBoard[row][column]);
+   			}
+  		}
+  		init();
+ 	}
+
+ // Public Interface Methods
+ 	// Create the board with a new set of cards
+ 	public void init() {
+ 		resetMatchedImages();
+ 		resetBoardParam();
+ 		peek();
+ 		mCardStorage = initCardStorage();
+ 		setImages();
+ 	}
+
+ 	// Re-set up the gameboard with a new set of cards
+ 	public void reInit() {
+ 		resetMatchedImages();
+ 		resetBoardParam();
+ 		peek();
+ 		setImages();
+ 	}
+
+ 	// Check to see if the board has been solved
+ 	public boolean isSolved() {
+ 		for (int row = 0; row < NUMBER_OF_ROWS; row++) {
+   			for (int column = 0; column < NUMBER_OF_COLUMNS; column++) {
+    			if (!mBoard[row][column].isEmpty()) {
+     				return false; // If there remains card that have to be matched
+    			}
+   			}
+  		}
+
+  		return true; // If the board is solved
+ 	}
+
+ 	// Add a card to selected card list
+
+ 	private void addToChose(Cell aCard) {
+ 		// Conditional to check if the card is not empty
+ 		if (aCard != null) {
+   			if (!chosenCards.contains(aCard)) {
+    			chosenCards.add(aCard);
+   			}
+  		} else {
+   			error("addToChose( Cell ) received null.", true);
+  		}
+ 	}
+
+ 	/* ToDo:
+ 	*	Add actionPerformed( with some action) method
+ 	*	Add Cell Location Method to give the exact location of the cell on board
+ 	*	Add a method to determine if the card is visible to the user at a certain location
+	*	Add methods to handle the images
+	* 	Random generation of cards method
+ 	*	*If possible, implement a preview/peek method to allow user to see the board before game starts
+ 	* 		many more...
+ 	*/
+
 
 
 }
