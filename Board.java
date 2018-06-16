@@ -243,17 +243,61 @@ public class Board extends JPanel implements ActionListener {
   		} // Outermost For Loop (rows)
  	}
 
- 	
+ 	// Generate a random image using the Random Java Class
+ 	private String generateRandomImageFilename(int max, int min) {
+ 		Random random = new Random();
+ 		Integer aNumber = (min + random.nextInt(max));
 
+ 		if(aNumber > 0 && aNumber <10) {
+ 			return "0" + aNumber;
+ 		} else {
+ 			return aNumber.toString();
+ 		}
+ 	}
 
+ 	// Create an array of String to hold all the index values of 24 random numbers. 
+ 	private String[] initCardStorage() {
+ 		String[] mCardStorage = new String[MAX_NUM_OF_CARDS];
+ 		String[] firstPair = new String[NUMBER_OF_PAIRS];
+ 		String[] secondPair = new String[NUMBER_OF_PAIRS];
 
- 	/* ToDo:
- 	*	Add a method to determine if the card is visible to the user at a certain location
-	*	Add methods to handle the images
-	* 	Random generation of cards method
- 	*	*If possible, implement a preview/peek method to allow user to see the board before game starts
- 	* 		many more...
- 	*/
+ 		firstPair = new randomListWithoutRep();
+
+ 		for (int i = 0; i < NUMBER_OF_PAIRS; i++) {
+ 			mCardStorage[i] = firstPair[i];
+ 		}
+
+ 		Collections.shuffle(Arrays.asList(firstPair));
+
+ 		for (int j = 0; j < NUMBER_OF_PAIRS; j++) {
+ 			secondPair[j] = firstPair[j];
+ 		}
+
+ 		for (int k = NUMBER_OF_PAIRS; k < MAX_NUM_OF_CARDS; k++) {
+ 			cardStorage[k] = secondPair[k - NUMBER_OF_PAIRS];
+ 		}
+ 		return cardStorage;
+ 	}
+
+ 	// Generate a list of image pair types (without repetition)
+ 	private String[] randomListWithoutRep() {
+ 		String[] generatedArray = new String[NUMBER_OF_PAIRS];
+ 		Arraylist<String> geneated = new Arraylist<String>();
+
+ 		// Goal is to determine the total number of different pairs
+ 		for (int i = 0; i < NUMBER_OF_PAIRS; i++) {
+   			while (true) {
+    			String next = generateRandomImageFilename(MAX_NUM_OF_CARDS, MIN_NUM_OF_CARDS);
+    			if (!generated.contains(next)) {
+     				generated.add(next);
+     				generatedArray[i] = generated.get(i);
+     				break; // Terminate out of the if statement
+    			}
+   			} // Close While Loop
+  		} // Close For Loop
+
+  		return generatedArray;
+ 	}
 
 
 
