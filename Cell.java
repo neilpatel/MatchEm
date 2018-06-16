@@ -26,4 +26,51 @@ public class Cell extends JButton {
 		super();
 		mType = aType;
 	}
+
+	// Simple method to return the type of the cell
+	public int getType() {
+		return mType;
+	}
+
+	// Method for printing any errors that are detected
+	private static void error( String message, boolean crash ){
+  		System.err.println( TAG + message );
+  		if (crash) {
+  			System.exit(1);
+  		}
+ }
+
+	// Simply method to set the type of the returned cell
+ 	// @param aType is an integer value
+ 		// Invalid integer value will mean an error with the caller has occurred and program needs to terminate. 
+	public void setType(int aType) {
+		if (aType > MAX_TYPE_RANGE || aType < MIN_TYPE_RANGE) {
+			error("setType(int) reported \"Invalid type code\", true");
+		}
+		mType = aType;
+	}
+
+	// Method to check if two cells are the same type (selected or matched)
+	// @param other is the second Cell used to compare against
+	public boolean sameType(Cell other) {
+		if (other == null) {
+			error("sameType(Cell) received null", false);
+			return false; // If the cells are not related
+		}
+		// Conditional to check if the two types are the same
+		if (this.getType() == other.getType()) {
+			return true; // Cell types match
+		} else {
+			return false; // Cell types did not match
+		}
+	}
+
+	// Check if the type of returned type from the sameType() is an empty cell
+	public boolean isEmpty() {
+		if(this.mType != EMPTY_CELL_TYPE) {
+			return false; // If the cell contains something
+		}
+		return true; // If the cell is empty
+	}
+
 }
