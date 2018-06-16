@@ -5,7 +5,7 @@ ___
 + Main Source Files
 	+ MatchEm
 + Additional Files
-	+ Coming soon
+	+ Board
 ___
 ## Usage
 + Clone the repository
