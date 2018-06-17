@@ -73,6 +73,34 @@ public class Cell extends JButton {
 		return true; // If the cell is empty
 	}
 
+	// Assign the individual cell to the selected cell Type
+	public void setSelected(boolean selected) {
+		mIsSelected = selected;
+	}
+
+	// Set the individual cell to the matched selection
+	public void setMatched(boolean matched) {
+		mIsMatched = matched;
+	}
+
+	// Conditional method to check if two cells that are selected are equal
+	public boolean mIsSelected() {
+		if (mIsSelected == true) {
+			return true; // If the user has currently selected this cell
+		}
+
+		return false; // If the cell has not been selected
+	}
+
+	// Conditional method to check if the cell has been successfully matched with its pair
+	public boolean isMatched() {
+		if (mIsMatched == true) {
+			return true; // The selected cards match
+		} else {
+			return false; // The selected cards do not match
+		}
+	}
+
 	/**	
 	*	ToDo Methods:
 	*	1.	> Check if two cells have been selected
