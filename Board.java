@@ -59,7 +59,7 @@ public class Board extends JPanel implements ActionListener {
  	public Board() {
  		super();
 
- 		setBackground(COLOR, BLUE);
+ 		setBackground(COLOR.BLUE);
  		setBorder(BorderFactory.createEmptyBorder(BOARD_BORDER_WIDTH,
    		BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH));
   		setLayout(new GridLayout(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS));
