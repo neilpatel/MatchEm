@@ -14,7 +14,7 @@ ___
 + To Compile:
 	+ `javac *.java`
 + To Execute:
-	+ `Java MatchEm`
+	+ `java MatchEm`
 ___
 ## MatchEm Features
 + More info coming soon
