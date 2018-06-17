@@ -6,6 +6,7 @@ ___
 	+ MatchEm
 + Additional Files
 	+ Board
+	+ Cell
 ___
 ## Usage
 + Clone the repository
