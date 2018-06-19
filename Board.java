@@ -337,7 +337,68 @@ public class Board extends JPanel implements ActionListener {
       return false;
     }
 
-    if 
+    if (firstCell.equals(secondCell)) {
+      return true;
+    }
+    return false;
+  }
+
+  // Check if any two cards are the same so it replaces them with a blank cell
+  // If they are different, flips the cards back and checks if the board is solved
+  private void setSelectedCards(Cell firstCell, Cell secondCell) {
+    if(firstCell == null || secondCell == null) {
+      if(firstCell == null) {
+        error("setSelectedCards(Cell, Cell) received (null, ??)", true);
+      }
+      if(secondCell == null) {
+        error("setSelectedCards(Cell, Cell) received (??, null)", true);
+      }
+      return;
+    }
+    if (firstCell.sameType(secondCell)) {
+      firstCell.setMatched(true);
+      secondCell.setMatched(true);
+      firstCell.setSelected(false);
+      secondCell.setSelected(false);
+      showImage(getCellLocation(secondCell).x,getCellLocation(secondCell).y);
+      peek();
+      numOfMatchedPairs++;
+      finalMessage();
+    } else {
+      firstCell.setMatched(false);
+      secondCell.setMatched(false);
+      firstCell.setSelected(false);
+      secondCell.setSelected(false);
+      showImage(getCellLocation(secondCell).x,getCellLocation(secondCell).y);
+      peek();
+      numOfFailedAttempts++;
+    }
+    resetSelectedCards();
+  }
+
+  // Check if a selected card is valid. The user cant select blank cells again
+  private boolean isCardValid(Cell aCard) {
+    if (aCard == null) {
+      error("isCardValid(Cell) received null", false);
+      return false;
+    }
+
+    if(!aCard.isEmpty()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  // Display the result of the game when finished
+  private void finalMessage() {
+    @SuppressWarnings("serial") 
+    Action showImagesAction = new AbstractAction(); {
+      public void ActionPerformed(ActionEvent e) {
+        
+      }
+    }
   }
 
  	/**
