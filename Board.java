@@ -299,6 +299,47 @@ public class Board extends JPanel implements ActionListener {
   		return generatedArray;
  	}
 
+  // Return a spcecific point on the board inside a particular cell
+  private Point getCellLocation(Cell aCell) {
+    if(aCell == null) {
+      error("getCellLocation(Cell) received null", true);
+      return null;
+    }
+
+    Point p = new Point();
+    for (int column = 0; column < NUMBER_OF_ROWS; columns++) {
+      for (int row = 0; row < NUMBER_OF_COLUMNS; row++) {
+        if (mBoard[column][row] == aCell) {
+          p.setLocation(column, row);
+          return p; 
+        }
+      } // Inner For loop (rows)
+    } // Outer For Loop (columns)
+    return null; // All else case
+  } // Method Closer
+
+  // Check if two cards in that particular location are the same
+  private boolean sameCellPosition(Point firstCell, Point secondCell) {
+    if (firstCell == null || secondCell == null) {
+      if (secondCell == firstCell) {
+        // If null, both cells are equal
+        return true; 
+      }
+
+      if (firstCell == null) {
+        error("sameCellPosition(Point, Point) received (null, ??)", true);
+      }
+
+      if (secondCell == null) {
+        error("sameCellPosition(Point, Point) received (??, null)" , true);
+      }
+
+      return false;
+    }
+
+    if 
+  }
+
  	/**
  	 *	ToDo: 
  	 *		1. Method to get a specific point on the cell's location
