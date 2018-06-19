@@ -396,9 +396,41 @@ public class Board extends JPanel implements ActionListener {
     @SuppressWarnings("serial") 
     Action showImagesAction = new AbstractAction(); {
       public void ActionPerformed(ActionEvent e) {
-        
-      }
-    }
+        if (isSolved()) {
+          Float numeralScore = (((float) numOfFailedAttempts) / ((float) MAX_NUM_OF_CARDS)) * 100;
+          String textualScore = numeralScore.toString();
+          JOptionPane.showMessageDialog(null, "Congratulations! You completed the game in:\n" + " Failed Attempts: " + numOfFailedAttempts + "\n Error percentage : " + textualScore + " %", "RESULTS",
+          JOptionPane.INFORMATION_MESSAGE);
+    } // If statement
+   } // ActionPerformed Method
+  }; // class implementation
+
+    Timer timer = new Timer(VISIBLE_DELAY, showImagesAction);
+    timer.setRepeats(false);
+    timer.start();
+
+  }
+
+  // Reset all matched images
+  private void resetMatchedImages() {
+    for(int row = 0; row < NUMBER_OF_ROWS; row++) {
+      for (int column = 0; column < NUMBER_OF_COLUMNS; column++) {
+        if (mBoard[row][column].isMatched()) {
+          mBoard[row][column].setMatched(false);
+        } // If statement
+      } // Column For Loop
+    } // Row For Loop
+  } // Method Closer
+
+// Static Methods
+  // Display Error Message
+  private static error(String message, boolean crash) {
+    // implement here
+  }
+
+  // Reset the number of selected cards to 0 after 2 cards have been chosen/checked
+  private static void resetSelectedCards() {
+    //implement here
   }
 
  	/**
