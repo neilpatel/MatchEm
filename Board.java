@@ -425,12 +425,15 @@ public class Board extends JPanel implements ActionListener {
 // Static Methods
   // Display Error Message
   private static error(String message, boolean crash) {
-    // implement here
+    System.err.println(TAG + message);
+    if (crash) {
+      System.exit(-1);
+    }
   }
 
   // Reset the number of selected cards to 0 after 2 cards have been chosen/checked
   private static void resetSelectedCards() {
-    //implement here
+    selectedCards = 0;
   }
 
  	/**
