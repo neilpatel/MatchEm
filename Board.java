@@ -19,7 +19,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 import java.net.URL;
 
@@ -59,7 +59,7 @@ public class Board extends JPanel implements ActionListener {
  	public Board() {
  		super();
 
- 		setBackground(COLOR.BLUE);
+ 		setBackground(Color.BLUE);
  		setBorder(BorderFactory.createEmptyBorder(BOARD_BORDER_WIDTH,
    		BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH));
   		setLayout(new GridLayout(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS));
@@ -257,11 +257,11 @@ public class Board extends JPanel implements ActionListener {
 
  	// Create an array of String to hold all the index values of 24 random numbers. 
  	private String[] initCardStorage() {
- 		String[] mCardStorage = new String[MAX_NUM_OF_CARDS];
+ 		String[] cardStorage = new String[MAX_NUM_OF_CARDS];
  		String[] firstPair = new String[NUMBER_OF_PAIRS];
  		String[] secondPair = new String[NUMBER_OF_PAIRS];
 
- 		firstPair = new randomListWithoutRep();
+ 		firstPair = randomListWithoutRep();
 
  		for (int i = 0; i < NUMBER_OF_PAIRS; i++) {
  			mCardStorage[i] = firstPair[i];
@@ -282,7 +282,7 @@ public class Board extends JPanel implements ActionListener {
  	// Generate a list of image pair types (without repetition)
  	private String[] randomListWithoutRep() {
  		String[] generatedArray = new String[NUMBER_OF_PAIRS];
- 		Arraylist<String> generated = new ArrayList<String>();
+ 		ArrayList<String> generated = new ArrayList<String>();
 
  		// Goal is to determine the total number of different pairs
  		for (int i = 0; i < NUMBER_OF_PAIRS; i++) {
@@ -307,7 +307,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     Point p = new Point();
-    for (int column = 0; column < NUMBER_OF_ROWS; columns++) {
+    for (int column = 0; column < NUMBER_OF_ROWS; column++) {
       for (int row = 0; row < NUMBER_OF_COLUMNS; row++) {
         if (mBoard[column][row] == aCell) {
           p.setLocation(column, row);
@@ -395,7 +395,7 @@ public class Board extends JPanel implements ActionListener {
   private void finalMessage() {
     @SuppressWarnings("serial") 
     Action showImagesAction = new AbstractAction() {
-      public void ActionPerformed(ActionEvent e) {
+      public void actionPerformed(ActionEvent e) {
         if (isSolved()) {
           Float numeralScore = (((float) numOfFailedAttempts) / ((float) MAX_NUM_OF_CARDS)) * 100;
           String textualScore = numeralScore.toString();
