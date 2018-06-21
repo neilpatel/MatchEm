@@ -282,7 +282,7 @@ public class Board extends JPanel implements ActionListener {
  	// Generate a list of image pair types (without repetition)
  	private String[] randomListWithoutRep() {
  		String[] generatedArray = new String[NUMBER_OF_PAIRS];
- 		Arraylist<String> geneated = new Arraylist<String>();
+ 		Arraylist<String> generated = new ArrayList<String>();
 
  		// Goal is to determine the total number of different pairs
  		for (int i = 0; i < NUMBER_OF_PAIRS; i++) {
@@ -394,7 +394,7 @@ public class Board extends JPanel implements ActionListener {
   // Display the result of the game when finished
   private void finalMessage() {
     @SuppressWarnings("serial") 
-    Action showImagesAction = new AbstractAction(); {
+    Action showImagesAction = new AbstractAction() {
       public void ActionPerformed(ActionEvent e) {
         if (isSolved()) {
           Float numeralScore = (((float) numOfFailedAttempts) / ((float) MAX_NUM_OF_CARDS)) * 100;
@@ -424,10 +424,10 @@ public class Board extends JPanel implements ActionListener {
 
 // Static Methods
   // Display Error Message
-  private static error(String message, boolean crash) {
+  private static void error(String message, boolean crash) {
     System.err.println(TAG + message);
     if (crash) {
-      System.exit(-1);
+      System.exit(1);
     }
   }
 
