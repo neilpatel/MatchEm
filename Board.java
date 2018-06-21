@@ -451,22 +451,4 @@ public class Board extends JPanel implements ActionListener {
     resetFailedAttempts();
     resetNumMatchedCards();
   }  
-
- 	/**
- 	 *	ToDo: 
- 	 *		1. Method to get a specific point on the cell's location
- 	 *		2. Check if two cards are the same in that location
- 	 *		3. Something to check if any two selected cards are the same 
- 	 *			to replace it with an empty cell. If they diff, flip back to empty
- 	 *			keep doing until the board is completely solved till matched pairs = MAX
- 	 *		4. Conditional method to check if the selected card type is valid
- 	 * 			If so, the user cannot select the same cell again
- 	 * 		5. Method to display a final game ending message to congrat the user
- 	 * 		6. Something to reset the cards. Do it by the specific number of rows/cols
- 	 *		7. Method similar in cell class to report the error messages
- 	 * 		8. Reset the counters for selected cards, matched cards, and board attempts
- 	 */
-
-
-
 }
