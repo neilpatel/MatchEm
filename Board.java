@@ -433,8 +433,24 @@ public class Board extends JPanel implements ActionListener {
 
   // Reset the number of selected cards to 0 after 2 cards have been chosen/checked
   private static void resetSelectedCards() {
-    selectedCards = 0;
+    selectedCards = 0; 
   }
+
+  // Reset the number of matched pairs on the board
+  private static void resetNumMatchedCards() {
+    numOfMatchedPairs = 0; 
+  }
+
+  // Reest the number of failed attempts in prior game
+  private static void resetFailedAttempts() {
+    numOfFailedAttempts = 0;
+  }
+
+  // Reset the board parameters
+  private static void resetBoardParam() {
+    resetFailedAttempts();
+    resetNumMatchedCards();
+  }  
 
  	/**
  	 *	ToDo: 
