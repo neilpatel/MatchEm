@@ -39,7 +39,7 @@ public class MatchEm extends JFrame {
 		mSplitPane = new JSplitPane();
 		add(mSplitPane, BorderLayout.SOUTH);
 
-		mRetryButton = JButton("Retry");		// Create a Retry button
+		mRetryButton = new JButton("Retry");		// Create a Retry button
 		mRetryButton.addMouseListener(btnMouseListener); 
 		mRetryButton.setFocusPainted(false);
 		mSplitPane.setLeftComponent(mRetryButton);
