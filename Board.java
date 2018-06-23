@@ -390,6 +390,16 @@ public class Board extends JPanel implements ActionListener {
     }
   }
 
+  // Reset all matched images
+  private void resetMatchedImages() {
+    for(int row = 0; row < NUMBER_OF_ROWS; row++) {
+      for (int column = 0; column < NUMBER_OF_COLUMNS; column++) {
+        if (mBoard[row][column].isMatched()) {
+          mBoard[row][column].setMatched(false);
+        } // If statement
+      } // Column For Loop
+    } // Row For Loop
+  } // Method Closer
 
   // Display the result of the game when finished
   private void finalMessage() {
@@ -408,19 +418,7 @@ public class Board extends JPanel implements ActionListener {
     Timer timer = new Timer(VISIBLE_DELAY, showImagesAction);
     timer.setRepeats(false);
     timer.start();
-
   }
-
-  // Reset all matched images
-  private void resetMatchedImages() {
-    for(int row = 0; row < NUMBER_OF_ROWS; row++) {
-      for (int column = 0; column < NUMBER_OF_COLUMNS; column++) {
-        if (mBoard[row][column].isMatched()) {
-          mBoard[row][column].setMatched(false);
-        } // If statement
-      } // Column For Loop
-    } // Row For Loop
-  } // Method Closer
 
 // Static Methods
   // Display Error Message
