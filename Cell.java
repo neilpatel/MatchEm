@@ -17,8 +17,8 @@ public class Cell extends JButton {
 	private static final int MAX_TYPE_RANGE = 26;
 	private static final int MIN_TYPE_RANGE = 0;
 	private static final int EMPTY_CELL_TYPE = 25;
-	private boolean mIsSelected = false;
-	private boolean mIsMatched = false;
+	private boolean mIsSelected = false;	// default case
+	private boolean mIsMatched = false;		// default case
 	private int mType = EMPTY_CELL_TYPE;
 
 	// Constructor; Create a cell of a specified type
@@ -73,15 +73,24 @@ public class Cell extends JButton {
 
 		return true; // If the cell is empty
 	}
+	
+	// Set the individual cell to the matched selection
+	public void setMatched(boolean matched) {
+		mIsMatched = matched;
+	}
 
 	// Assign the individual cell to the selected cell Type
 	public void setSelected(boolean selected) {
 		mIsSelected = selected;
 	}
-
-	// Set the individual cell to the matched selection
-	public void setMatched(boolean matched) {
-		mIsMatched = matched;
+	
+	// Conditional method to check if the cell has been successfully matched with its pair
+	public boolean isMatched() {
+		if (mIsMatched == true) {
+			return true; // The selected cards match
+		} else {
+			return false; // The selected cards do not match
+		}
 	}
 
 	// Conditional method to check if two cells that are selected are equal
@@ -93,12 +102,4 @@ public class Cell extends JButton {
 		return false; // If the cell has not been selected
 	}
 
-	// Conditional method to check if the cell has been successfully matched with its pair
-	public boolean isMatched() {
-		if (mIsMatched == true) {
-			return true; // The selected cards match
-		} else {
-			return false; // The selected cards do not match
-		}
-	}
 }
