@@ -37,7 +37,7 @@ public class Board extends JPanel implements ActionListener {
 	private static final int FIRST = 0;
 	private static final int SECOND = 1;
 	private static final int VISIBLE_DELAY = (int) 2000;
-	private static final int PEEK_DELAY = (int) 2500;
+	private static final int PEEK_DELAY = (int) 3000;
 	private static final int EMPTY_CELL_TYPE = 0;
 	private static final int HIDDEN_CARD_TYPE = 26;
 	private static final int EMPTY_CARD_TYPE = 25;
