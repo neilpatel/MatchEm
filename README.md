@@ -17,7 +17,7 @@ ___
 	+ `java MatchEm`
 ___
 ## MatchEm Features
-+ Current status: No compilation errors anymore, still need to fix game functionality
++ Current Status; Game functionality still in progress. Images fixed and board design finalized
 + More info coming soon
 ___
 
