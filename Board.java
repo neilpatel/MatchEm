@@ -264,7 +264,7 @@ public class Board extends JPanel implements ActionListener {
  		firstPair = randomListWithoutRep();
 
  		for (int i = 0; i < NUMBER_OF_PAIRS; i++) {
- 			mCardStorage[i] = firstPair[i];
+ 			cardStorage[i] = firstPair[i];
  		}
 
  		Collections.shuffle(Arrays.asList(firstPair));
