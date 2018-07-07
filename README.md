@@ -28,14 +28,14 @@ ___
 	+ Restart the current run of the game from the beginning
 + Results
 	+ A scoreboard will be displayed upon completion of the game
+	+ *This feature is not currently operational at this time*
 ___
 ## How to Play
 + At the start of the game, the correct board will be displayed. After a few seconds, the game will cover all the cells with a default image. 
 + The objective of the game is to match the correct pairs of cells with each other. 
-+ Tip: The MatchEm game is best played when the screen is maximized.
++ *Tip:* The MatchEm game is best played when the screen is maximized.
 	+ *Resizable window option has been implemented in this version*
-+ <p><u>Tip:</u> The MatchEm Game is best played when the screen is maximized. </p>
-	+ *Resizable window option has been implemented in this version*
+
 ___
 <p align = "center"> <b> Hope you like the project!!  </b> </p>
 
