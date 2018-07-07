@@ -409,7 +409,7 @@ public class Board extends JPanel implements ActionListener {
         if (isSolved()) {
           Float numeralScore = (((float) numOfFailedAttempts) / ((float) MAX_NUM_OF_CARDS)) * 100;
           String textualScore = numeralScore.toString();
-          JOptionPane.showMessageDialog(null, "Congratulations! You completed the game in:\n" + " Failed Attempts: " + numOfFailedAttempts + "\n Error percentage : " + textualScore + " %", "RESULTS",
+          JOptionPane.showMessageDialog(null, "Congratulations! You completed the game in:\n" + " Failed Attempts: " + numOfFailedAttempts + "\n Error percentage: " + textualScore + " %", "Results",
           JOptionPane.INFORMATION_MESSAGE);
     } // If statement
    } // ActionPerformed Method
