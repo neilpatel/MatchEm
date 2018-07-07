@@ -34,7 +34,7 @@ ___
 + The objective of the game is to match the correct pairs of cells with each other. 
 + Tip: The MatchEm game is best played when the screen is maximized.
 	+ *Resizable window option has been implemented in this version*
-+ <p><u>Tip:</u> The MatchEm Game is best played when the screen is maximized.
++ <p><u>Tip:</u> The MatchEm Game is best played when the screen is maximized. </p>
 	+ *Resizable window option has been implemented in this version*
 ___
 <p align = "center"> <b> Hope you like the project!!  </b> </p>
