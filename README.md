@@ -15,6 +15,7 @@ ___
 	+ `javac *.java`
 + To Execute:
 	+ `java MatchEm`
+	+ *Note: Ignore any "File not found" warnings. Execute this command again*
 ___
 ## MatchEm Features
 + Current Status; Game functionality still in progress. Images fixed and board design finalized
