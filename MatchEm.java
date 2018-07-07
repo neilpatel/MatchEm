@@ -41,8 +41,8 @@ public class MatchEm extends JFrame {
 		add(mSplitPane, BorderLayout.SOUTH);
 
 		mRetryButton = new JButton("Retry");		// Create a Retry button
-		mRetryButton.addMouseListener(btnMouseListener); 
 		mRetryButton.setFocusPainted(false);
+		mRetryButton.addMouseListener(btnMouseListener); 
 		mSplitPane.setLeftComponent(mRetryButton);
 
 		mNewButton = new JButton("New Game"); 	// Create a New Game button
@@ -50,9 +50,9 @@ public class MatchEm extends JFrame {
 		mNewButton.addMouseListener(btnMouseListener);
 		mSplitPane.setRightComponent(mNewButton);
 
+		pack();		// 'Pack' the components within the window based on the respective sizes
 		setResizable(true); 	// Allow the user to resize the window if needed
 		setVisible(true); 		// Keep the Components and his subchildren visible
-		pack();		// 'Pack' the components within the window based on the respective sizes
 	}
 
 	// Mouse Listener
