@@ -36,8 +36,8 @@ public class Board extends JPanel implements ActionListener {
 	private static final int MAX_SELECTED_CARDS = 2;
 	private static final int FIRST = 0;
 	private static final int SECOND = 1;
-	private static final int VISIBLE_DELAY = (int) 2 * 1000;
-	private static final int PEEK_DELAY = (int) 2 * 1000;
+	private static final int VISIBLE_DELAY = (int) 2000;
+	private static final int PEEK_DELAY = (int) 2000;
 	private static final int EMPTY_CELL_TYPE = 0;
 	private static final int HIDDEN_CARD_TYPE = 26;
 	private static final int EMPTY_CARD_TYPE = 25;
@@ -59,7 +59,7 @@ public class Board extends JPanel implements ActionListener {
  	public Board() {
  		super();
 
- 		setBackground(Color.BLUE);
+ 		setBackground(Color.WHITE);
  		setBorder(BorderFactory.createEmptyBorder(BOARD_BORDER_WIDTH,
    		BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH, BOARD_BORDER_WIDTH));
   		setLayout(new GridLayout(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS));
@@ -134,6 +134,13 @@ public class Board extends JPanel implements ActionListener {
   		}
 
  		++selectedCards;
+		
+		if (selectedCards <= MAX_SELECTED_CARDS) {
+			Point gridLoc = getCellLocation((Cell) e.getSource());
+			setCardToVisible(gridLoc.x, gridLoc.y);
+			mCardChecker[selectedCards - 1] = getCellAtLoc(gridLoc);
+			addToChose(getCellAtLoc(gridLoc));
+  		}
 
  		// Conditional to check if the selected number of cards is the max number
   		if (selectedCards == MAX_SELECTED_CARDS) {
@@ -143,13 +150,6 @@ public class Board extends JPanel implements ActionListener {
    			} else {
     			--selectedCards;
    			}
-  		}
-
-  		if (selectedCards <= MAX_SELECTED_CARDS) {
-   			Point gridLoc = getCellLocation((Cell) e.getSource());
-   			setCardToVisible(gridLoc.x, gridLoc.y);
-  			mCardChecker[selectedCards - 1] = getCellAtLoc(gridLoc);
-  			addToChose(getCellAtLoc(gridLoc));
   		}
  	}
 
@@ -425,7 +425,7 @@ public class Board extends JPanel implements ActionListener {
   private static void error(String message, boolean crash) {
     System.err.println(TAG + message);
     if (crash) {
-      System.exit(1);
+      System.exit(-1);
     }
   }
 
