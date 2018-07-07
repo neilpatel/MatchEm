@@ -32,6 +32,7 @@ public class MatchEm extends JFrame {
 		super(); 		// Access/Call Functions on object's parent with no args
 		setTitle("Neil's Custom Matching Card Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBackground(Color.WHITE);
 
 		mBoard = new Board();			// Create a Board
 		add(mBoard, BorderLayout.CENTER);
