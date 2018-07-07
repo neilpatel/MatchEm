@@ -33,10 +33,10 @@ public class Cell extends JButton {
 	}
 
 	// Method for printing any errors that are detected
-	private static void error( String message, boolean crash) {
-  		System.err.println( TAG + message );
+	private static void error(String message, boolean crash) {
+  		System.err.println(TAG + message );
   		if (crash) {
-  			System.exit(1);
+  			System.exit(-1);
   		}
  	}
 
@@ -94,7 +94,7 @@ public class Cell extends JButton {
 	}
 
 	// Conditional method to check if two cells that are selected are equal
-	public boolean mIsSelected() {
+	public boolean isSelected() {
 		if (mIsSelected == true) {
 			return true; // If the user has currently selected this cell
 		}
