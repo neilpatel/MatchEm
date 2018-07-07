@@ -193,7 +193,7 @@ public class Board extends JPanel implements ActionListener {
 			
 				if (file == null) {
      				System.err.println(TAG + "setImages() reported error \"File not found\".");
-     				System.exit(1);
+     				System.exit(-1);
     			}
     			anImage = new ImageIcon(file);
 				mBoard[row][column].setIcon(anImage);
