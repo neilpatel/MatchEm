@@ -1,7 +1,7 @@
 /*
-*  Author: Neil Patel
-*  GitHub: neilpatel
-*  Project: MatchEm
+ * Author: Neil Patel
+ * GitHub: neilpatel
+ * Project: MatchEm
 */
 
 // import statements
