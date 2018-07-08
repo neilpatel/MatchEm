@@ -28,6 +28,7 @@ ___
 	+ Restart the current run of the game from the beginning
 + Results
 	+ A scoreboard will be displayed upon completion of the game
+	+ *Results feature is currently NOT operational at this time*
 ___
 ## How to Play
 + At the start of the game, the correct board will be displayed. After a few seconds, the game will cover all the cells with a default image. 
